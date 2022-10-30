@@ -69,7 +69,7 @@ This part of the course asked me to apply concepts for exponential smoothing, us
 <details open>
 <summary> <h3>💡[Solution]</h3> </summary>
 
-`Repository:` [(Link)](https://github.com/SamTaylor92/The-Complete-Pandas-Bootcamp-2022-Data-Science-with-Python)<br> 
+`Repository:` [(Link)](https://github.com/SamTaylor92/Python_for_time_series_data_analysis/blob/main/Exponential-smoothing.ipynb)<br> 
 `Notes:` Repository contains the Jupyter notebook and CSV datasets
 
 ![Screenshot 2022-10-30 at 11 37 13](https://user-images.githubusercontent.com/105542266/198874278-4b50495f-7732-4ed4-86ad-fbe1805bed70.png)
