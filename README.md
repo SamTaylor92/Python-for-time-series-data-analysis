@@ -1,4 +1,4 @@
-# [Q4 2022] Python for Time Series Data Analysis
+# [Nov 2022] Python for Time Series Data Analysis
 
 
 <p align="right"> <a 
