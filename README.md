@@ -13,14 +13,13 @@ href="mailto:samtaylor92@live.co.uk" target="_blank"><img alt="Email" src="https
 </p>
 <p align="right">
 
-
 ## Description
-Project work for the course: [Python for Time Series Data Analysis](https://www.udemy.com/course/python-for-time-series-data-analysis).    
+This is a repository to highlight certain parts of the [Python for Time Series Data Analysis](https://www.udemy.com/course/python-for-time-series-data-analysis) course, to highlights some of the key skills and concepts covered.<br><br>
 
-![Screenshot 2022-10-30 at 11 37 13](https://user-images.githubusercontent.com/105542266/198874278-4b50495f-7732-4ed4-86ad-fbe1805bed70.png)
-<p align="right"> [Simple & triple exponential smoothing]</p>
-  
-  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/105542266/198875156-7e28b2ca-a0b8-43d2-8bea-57e9433104b3.png">
+</p>
+
 <h2> Tools</h2>
 <p>
 <a target="_blank"><img alt="Jupyter Notebook" src="https://img.shields.io/badge/Jupyter-F37626.svg?style=for-the-badge&logo=Jupyter&logoColor=white"/></a> 
