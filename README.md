@@ -36,6 +36,8 @@ This is a repository to highlight certain parts of the [Python for Time Series D
 - [Exponential smoothing](#exponential-smoothing)
   - [Task](#-task-)
   - [Solution](#solution)
+- [ADFULLER function: test for seasonaily](#adfuller-function-test-for-seasonaily)
+  - [Code](#-code-)
 - [Reference material](#reference-material)
 
 </details>
@@ -49,7 +51,7 @@ This part of the course asked me to apply concepts for exponential smoothing, us
   
 <details open>  
   
-<summary> <h3> 🎯[Task] </h3> </summary>
+<summary> <h3> 🎯Task </h3> </summary>
 
 > For this set of exercises we're using data from the Federal Reserve Economic Database (FRED) concerning the Industrial Production Index for Electricity and Gas Utilities from January 1970 to December 1989.<br><br>
 > Data source: https://fred.stlouisfed.org/series/IPG2211A2N
@@ -66,7 +68,7 @@ This part of the course asked me to apply concepts for exponential smoothing, us
 </details>  
   
 <details open>
-<summary> <h3>💡[Solution]</h3> </summary>
+<summary> <h3>💡Solution</h3> </summary>
 
 `Repository:` [(Link)](https://github.com/SamTaylor92/Python_for_time_series_data_analysis/blob/main/Exponential-smoothing.ipynb)<br> 
 `Notes:` Repository contains the Jupyter notebook and CSV datasets
@@ -80,7 +82,55 @@ This part of the course asked me to apply concepts for exponential smoothing, us
 </details>
 
 <details open>
-<summary> <h3>📚[Reference material]</h3> </summary>
+<summary> <h2>👨🏼‍💻ADFULLER function: test for seasonaily</h2> </summary>
+  
+This is a function for printing a more user friendly adfuller report in python. 
+
+<img width="494" alt="Screenshot 2022-11-06 at 10 53 01" src="https://user-images.githubusercontent.com/105542266/200164346-8912b8e2-696e-4646-9da6-30281e59d176.png">  
+  
+<p align='right'><a href="#-tools" target="_blank">⬆</a></p>	
+  
+<details open>  
+  
+<summary> <h3> 🐍Code </h3> </summary>
+
+    
+    from statsmodels.tsa.stattools import adfuller
+    
+    def adf_test(series,title=''):
+        """
+        Pass in a time series and an optional title, returns an ADF report
+        """
+    print(f'Augmented Dickey-Fuller Test: {title}')
+    result = adfuller(series.dropna(),autolag='AIC') # .dropna() handles differenced data
+    
+    labels = ['ADF test statistic','p-value','# lags used','# observations']
+    out = pd.Series(result[0:4],index=labels)
+
+    for key,val in result[4].items():
+        out[f'critical value ({key})']=val
+        
+    print(out.to_string())          # .to_string() removes the line "dtype: float64"
+    
+    if result[1] <= 0.05:
+        print("Strong evidence against the null hypothesis")
+        print("Reject the null hypothesis")
+        print("Data has no unit root and is stationary")
+    else:
+        print("Weak evidence against the null hypothesis")
+        print("Fail to reject the null hypothesis")
+        print("Data has a unit root and is non-stationary")
+                        
+
+<p align='right'><a href="#-tools" target="_blank">⬆</a></p>	    
+  
+</details>  
+</details>
+</details>
+</details>
+
+<details open>
+<summary> <h3>📚Reference material</h3> </summary>
   
 - [x] [Python for Time Series Data Analysis](https://www.udemy.com/course/python-for-time-series-data-analysis/)
 <p align='right'><a href="#-tools" target="_blank">⬆</a></p>	
