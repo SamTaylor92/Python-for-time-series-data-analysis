@@ -36,7 +36,7 @@ This is a repository to highlight certain parts of the [Python for Time Series D
 - [Exponential smoothing](#exponential-smoothing)
   - [Task](#-task-)
   - [Solution](#solution)
-- [ADFULLER function: test for seasonaily](#adfuller-function-test-for-seasonaily)
+- [Stationarity test: adfuller](#stationarity-test-adfuller)
   - [Code](#-code-)
 - [Reference material](#reference-material)
 
@@ -82,8 +82,11 @@ This part of the course asked me to apply concepts for exponential smoothing, us
 </details>
 
 <details open>
-<summary> <h2>👨🏼‍💻ADFULLER function: test for seasonaily</h2> </summary>
+<summary> <h2>👨🏼‍💻Stationarity test: adfuller</h2> </summary>
   
+The Adfuller method allows us to look for stationarity within a dataset.<br>
+- Essentially, does a timeseries dataset remain stationary (similar mean and variance) across time, regardless of trends and potential noise?<br>
+
 This is a function for printing a more user friendly adfuller report in python. 
 
 <img width="494" alt="Screenshot 2022-11-06 at 10 53 01" src="https://user-images.githubusercontent.com/105542266/200164346-8912b8e2-696e-4646-9da6-30281e59d176.png">  
@@ -94,33 +97,97 @@ This is a function for printing a more user friendly adfuller report in python.
   
 <summary> <h3> 🐍Code </h3> </summary>
 
+```python    
+from statsmodels.tsa.stattools import adfuller
     
-    from statsmodels.tsa.stattools import adfuller
+def adf_test(series,title=''):
+    """
+    Pass in a time series and an optional title, returns an ADF report
+    """
+print(f'Augmented Dickey-Fuller Test: {title}')
+result = adfuller(series.dropna(),autolag='AIC') # .dropna() handles differenced data
     
-    def adf_test(series,title=''):
-        """
-        Pass in a time series and an optional title, returns an ADF report
-        """
-    print(f'Augmented Dickey-Fuller Test: {title}')
-    result = adfuller(series.dropna(),autolag='AIC') # .dropna() handles differenced data
-    
-    labels = ['ADF test statistic','p-value','# lags used','# observations']
-    out = pd.Series(result[0:4],index=labels)
+labels = ['ADF test statistic','p-value','# lags used','# observations']
+out = pd.Series(result[0:4],index=labels)
 
-    for key,val in result[4].items():
-        out[f'critical value ({key})']=val
+for key,val in result[4].items():
+    out[f'critical value ({key})']=val
         
-    print(out.to_string())          # .to_string() removes the line "dtype: float64"
+print(out.to_string())          # .to_string() removes the line "dtype: float64"
     
-    if result[1] <= 0.05:
-        print("Strong evidence against the null hypothesis")
-        print("Reject the null hypothesis")
-        print("Data has no unit root and is stationary")
-    else:
-        print("Weak evidence against the null hypothesis")
-        print("Fail to reject the null hypothesis")
-        print("Data has a unit root and is non-stationary")
-                        
+if result[1] <= 0.05:
+    print("Strong evidence against the null hypothesis")
+    print("Reject the null hypothesis")
+    print("Data has no unit root and is stationary")
+else:
+    print("Weak evidence against the null hypothesis")
+    print("Fail to reject the null hypothesis")
+    print("Data has a unit root and is non-stationary")
+```                        
+
+<p align='right'><a href="#-tools" target="_blank">⬆</a></p>	    
+  
+</details>  
+</details>
+</details>
+</details>
+
+<details open>
+<summary> <h2>👨🏼‍💻Stationarity test: adfuller: ADFULLER</h2> </summary>
+  
+The Adfuller method allows us to look for stationarity within a dataset.<br>
+- Essentially, does a timeseries dataset remain stationary (similar mean and variance) across time, regardless of trends and potential noise.<br>
+
+This is a function for printing a more user friendly adfuller report in python. 
+
+<img width="494" alt="Screenshot 2022-11-06 at 10 53 01" src="https://user-images.githubusercontent.com/105542266/200164346-8912b8e2-696e-4646-9da6-30281e59d176.png">  
+  
+<p align='right'><a href="#-tools" target="_blank">⬆</a></p>	
+  
+<details open>  
+  
+<summary> <h3> 🐍Code </h3> </summary>
+
+`Dataset:` [[Link]](https://google.com)
+
+```python
+#Import a dataset & set index to datetime and assign a datetime frequency
+
+df3 = pd.read_csv('../Data/samples.csv',
+                  index_col=0,
+                  parse_dates=True)
+    
+df3.index.freq = 'MS'
+    
+df3[['a','d']].plot(figsize=(16,5));
+```
+    
+![Screenshot 2022-11-08 at 13 56 53](https://user-images.githubusercontent.com/105542266/200572391-0201b062-8eb8-4685-909b-5d090f336565.png)
+
+```python
+# Import the statistical package needed
+# Add a semicolon at the end to avoid duplicate output
+    
+from statsmodels.tsa.stattools import grangercausalitytests
+    
+grangercausalitytests(df3[['a','d']],
+                      maxlag=3);
+```
+
+![Screenshot 2022-11-08 at 13 57 10](https://user-images.githubusercontent.com/105542266/200572424-3a0a9fb0-7e30-4ba5-a9da-1066968d3f09.png)
+
+```python
+# A visual representation of the correlation found
+# Two days after something happens with column a, the data in column d reacts.
+
+df3['a'].iloc[2:].plot(figsize=(16,5),
+                       legend=True);
+    
+df3['d'].shift(2).plot(legend=True);   
+```
+
+![Screenshot 2022-11-08 at 13 57 19](https://user-images.githubusercontent.com/105542266/200572592-915dc35e-dbed-4440-8e67-79eb40f11645.png)
+                      
 
 <p align='right'><a href="#-tools" target="_blank">⬆</a></p>	    
   
