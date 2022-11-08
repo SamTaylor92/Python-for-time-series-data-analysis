@@ -36,10 +36,12 @@ This is a repository to highlight certain parts of the [Python for Time Series D
 - [Exponential smoothing](#exponential-smoothing)
   - [Task](#-task-)
   - [Solution](#solution)
-- [Stationarity test: adfuller](#stationarity-test-adfuller)
+- [Evaluating forecasting models](#evaluating-forecasting-models)
   - [Code](#-code-)
-- [Causality test: granger](#causality-test-granger)
+- [Stationarity test: adfuller](#stationarity-test-adfuller)
   - [Code](#-code--1)
+- [Causality test: granger](#causality-test-granger)
+  - [Code](#-code--2)
 - [Reference material](#reference-material)
 
 </details>
@@ -78,6 +80,69 @@ This part of the course asked me to apply concepts for exponential smoothing, us
 ![Screenshot 2022-10-30 at 11 37 13](https://user-images.githubusercontent.com/105542266/198874278-4b50495f-7732-4ed4-86ad-fbe1805bed70.png)
 <p align="right"> [Simple & triple exponential smoothing]</p>
 
+</details>  
+</details>
+</details>
+</details>
+
+<details open>
+<summary> <h2>🤔Evaluating forecasting models</h2> </summary>
+
+<br> There are three common ways to evaluate a forecasting model: <br> 
+- `Mean Squared Error (MSE)`
+- `Root Mean Squared Error (RMSE)`
+  - Minimizing the RMSE will lead to forecasts of the mean.
+- `Mean Absolute Error (MAE)`
+  - A forecast method that minimizes the MAE will lead to forecasts of the median.
+
+Most people use RMSE for the main metric for evaluating predictions. <br>
+It punishes larger values and stays in the same units as the original data
+<br>
+  
+<p align='right'><a href="#-tools" target="_blank">⬆</a></p>	
+  
+<details open>  
+  
+<summary> <h3> 🐍Code </h3> </summary>
+
+```python    
+#Create a dataset
+  
+import numpy as np
+import pandas as pd
+
+np.random.seed(42)
+df = pd.DataFrame(np.random.randint(20,30,(50,2)),
+                  columns=['test','predictions'])
+df.plot(figsize=(12,4));
+``` 
+
+<br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/105542266/200584412-0b68546b-57ce-43fe-bd73-e7c6f7d5962f.png" alt="Example dataset plot">
+</p>         
+
+```python
+#Evaluate the predictions
+  
+from statsmodels.tools.eval_measures import mse, rmse, meanabs
+
+MSE = mse(df['test'],df['predictions']) 
+RMSE = rmse(df['test'],df['predictions'])
+MAE = meanabs(df['test'],df['predictions'])
+
+print(f'Model Mean Squared Error (MSE): {MSE:.3f}')
+print(f'Model Root Mean Squared Error (RMSE): {RMSE:.3f}')
+print(f'Model Mean Absolute Error (MAE): {MAE:.3f}')
+```                        
+<br>
+  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/105542266/200585575-52aea2cd-4d79-4b30-be7e-cb7e641e0d19.png" alt="Example dataset plot">
+</p>           
+  
+<p align='right'><a href="#-tools" target="_blank">⬆</a></p>	    
+  
 </details>  
 </details>
 </details>
