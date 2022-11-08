@@ -150,7 +150,7 @@ The Granger causality test is a a hypothesis test to determine if one time serie
   
 <summary> <h3> 🐍Code </h3> </summary>
 
-`Dataset:` [[Link]](https://google.com)
+`Dataset:` [[samples.csv]](https://github.com/SamTaylor92/Python_for_time_series_data_analysis/blob/main/samples.csv)
 
 ```python
 #Import a dataset & set index to datetime and assign a datetime frequency
