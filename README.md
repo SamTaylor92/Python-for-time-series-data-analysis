@@ -14,7 +14,7 @@ href="mailto:samtaylor92@live.co.uk" target="_blank"><img alt="Email" src="https
 <p align="right">
 
 ## Description
-This is a repository to highlight certain parts of the [Python for Time Series Data Analysis](https://www.udemy.com/course/python-for-time-series-data-analysis) course, to highlights some of the key skills and concepts covered.<br><br>
+This is a repository to highlight certain parts of the [Python for Time Series Data Analysis](https://www.udemy.com/course/python-for-time-series-data-analysis) course, and record some of the key skills and concepts covered.<br><br>
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/105542266/198875156-7e28b2ca-a0b8-43d2-8bea-57e9433104b3.png">
