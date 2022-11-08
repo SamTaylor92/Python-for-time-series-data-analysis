@@ -38,6 +38,8 @@ This is a repository to highlight certain parts of the [Python for Time Series D
   - [Solution](#solution)
 - [Stationarity test: adfuller](#stationarity-test-adfuller)
   - [Code](#-code-)
+- [Causality test: granger](#causality-test-granger)
+  - [Code](#-code--1)
 - [Reference material](#reference-material)
 
 </details>
@@ -88,8 +90,6 @@ The Adfuller method allows us to look for stationarity within a dataset.<br>
 - Essentially, does a timeseries dataset remain stationary (similar mean and variance) across time, regardless of trends and potential noise?<br>
 
 This is a function for printing a more user friendly adfuller report in python. 
-
-<img width="494" alt="Screenshot 2022-11-06 at 10 53 01" src="https://user-images.githubusercontent.com/105542266/200164346-8912b8e2-696e-4646-9da6-30281e59d176.png">  
   
 <p align='right'><a href="#-tools" target="_blank">⬆</a></p>	
   
@@ -123,8 +123,15 @@ else:
     print("Weak evidence against the null hypothesis")
     print("Fail to reject the null hypothesis")
     print("Data has a unit root and is non-stationary")
-```                        
 
+# To use, type: 
+# adf_test(dataframe['column_name'])
+```                        
+<br>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/105542266/200164346-8912b8e2-696e-4646-9da6-30281e59d176.png" img width="494" alt="Example adfuller test"            >
+</p>         
+                    
 <p align='right'><a href="#-tools" target="_blank">⬆</a></p>	    
   
 </details>  
@@ -133,14 +140,9 @@ else:
 </details>
 
 <details open>
-<summary> <h2>👨🏼‍💻Stationarity test: adfuller</h2> </summary>
+<summary> <h2>👨🏼‍💻Causality test: granger</h2> </summary>
   
-The Adfuller method allows us to look for stationarity within a dataset.<br>
-- Essentially, does a timeseries dataset remain stationary (similar mean and variance) across time, regardless of trends and potential noise.<br>
-
-This is a function for printing a more user friendly adfuller report in python. 
-
-<img width="494" alt="Screenshot 2022-11-06 at 10 53 01" src="https://user-images.githubusercontent.com/105542266/200164346-8912b8e2-696e-4646-9da6-30281e59d176.png">  
+The Granger causality test is a a hypothesis test to determine if one time series is useful in forecasting another. <br>It observes changes in one series and sees if these changes are correlated to changes in another after a consistent amount of time. 
   
 <p align='right'><a href="#-tools" target="_blank">⬆</a></p>	
   
