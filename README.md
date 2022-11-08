@@ -133,7 +133,7 @@ else:
 </details>
 
 <details open>
-<summary> <h2>👨🏼‍💻Stationarity test: adfuller: ADFULLER</h2> </summary>
+<summary> <h2>👨🏼‍💻Stationarity test: adfuller</h2> </summary>
   
 The Adfuller method allows us to look for stationarity within a dataset.<br>
 - Essentially, does a timeseries dataset remain stationary (similar mean and variance) across time, regardless of trends and potential noise.<br>
