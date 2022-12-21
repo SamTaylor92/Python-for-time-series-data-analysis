@@ -42,6 +42,8 @@ This is a repository to highlight certain parts of the [Python for Time Series D
   - [Code](#-code--1)
 - [Causality test: granger](#causality-test-granger)
   - [Code](#-code--2)
+- [Forecasting: SARIMAX](#forecasting-sarimax)
+  - [Code](#-code--3)
 - [Reference material](#reference-material)
 
 </details>
@@ -257,6 +259,25 @@ df3['d'].shift(2).plot(legend=True);
                       
 
 <p align='right'><a href="#-tools" target="_blank">⬆</a></p>	    
+
+<details open>
+<summary> <h2>📈Forecasting: SARIMAX</h2> </summary>
+  
+A piece of code to be used as a template for seasonal forecasting with an exogenous variable using SARIMAX.
+  
+![Screenshot 2022-12-21 at 11 32 54](https://user-images.githubusercontent.com/105542266/208884677-f2dae7d4-2d9a-4313-ac8e-5138af5b6aea.png)
+  
+<p align='right'><a href="#-tools" target="_blank">⬆</a></p>	
+  
+<details open>  
+  
+<summary> <h3> 🐍Code </h3> </summary>
+
+`Code:` [[Code Snippet]](https://gist.github.com/SamTaylor92/2b0d6b018074fdd58388a429582c5410#file-sarimax_template-py)
+  
+![Screenshot 2022-12-21 at 11 35 09](https://user-images.githubusercontent.com/105542266/208884884-dec0485b-abd9-4957-b0a2-1c1f07ef0be8.png)
+  
+<p align='right'><a href="#-tools" target="_blank">⬆</a></p>	
   
 </details>  
 </details>
